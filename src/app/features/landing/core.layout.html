@@ -2,7 +2,8 @@
   <mat-sidenav-content>
     <mat-toolbar
       color="primary"
-      fxLayout="row"
+      fxLayout="column"
+      fxLayout.gt-sm="row"
       fxLayoutAlign="space-between  center"
     >
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px">
@@ -21,7 +22,7 @@
         </div>
       </div>
       <div fxLayoutAlign="center center">
-        <mat-nav-list fxLayout="row" fxLayoutGap="15px">
+        <mat-nav-list fxLayout="row" fxLayoutGap="5px">
           <ng-container>
             <a
               mat-list-item
@@ -29,12 +30,11 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
               fxLayoutAlign="center center"
-              fxLayoutGap="10px"
             >
               <div
                 xLayout="row"
                 fxLayoutAlign="space-around center"
-                fxLayoutGap="10px"
+                fxLayoutGap="5px"
               >
                 <mat-icon>people </mat-icon>
                 <div>Usuarios</div>
@@ -47,12 +47,11 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
               fxLayoutAlign="center center"
-              fxLayoutGap="10px"
             >
               <div
                 xLayout="row"
                 fxLayoutAlign="space-around center"
-                fxLayoutGap="10px"
+                fxLayoutGap="5px"
               >
                 <mat-icon>store</mat-icon>
                 <div>Sucursales</div>

@@ -1,0 +1,49 @@
+<form
+  [formGroup]="form"
+  fxLayout="column"
+  fxLayoutAlign="center stretch"
+  (ngSubmit)="onSubmit()"
+  class="mat-body"
+  fxLayoutGap="10px"
+>
+  <div fxFlexFill fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+    <mat-form-field fxFlex>
+      <mat-label>Clave</mat-label>
+      <input
+        formControlName="cod_sucursal"
+        matInput
+        type="number"
+        [readonly]="clave"
+      />
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'cod_sucursal')">
+          Este campo es requerido.
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-label>Nombre </mat-label>
+      <input autocomplete="off" formControlName="name" matInput type="text" />
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'name')">
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('alphaWithSpace', 'name')">
+          Sólo se permiten letras.
+        </span>
+        <span *ngIf="form.hasError('whitespace', 'name')">
+          No has introducido caracteres.
+        </span>
+        <span
+          *ngIf="
+            !form.hasError('whitespace', 'name') &&
+            form.hasError('pattern', 'name')
+          "
+        >
+          No es un formato válido.
+        </span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

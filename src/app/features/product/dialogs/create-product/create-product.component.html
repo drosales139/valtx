@@ -1,0 +1,29 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="80">
+    <h2 class="mat-title">Nueva producto</h2>
+    <div
+      class="mat-title"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="15px"
+    >
+      <create-product-form
+        (onSubmit)="onSubmit($event)"
+        #form
+      ></create-product-form>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="15px">
+      <button mat-raised-button (click)="form.reset()" mat-dialog-close>
+        Cancelar
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="form.onSubmit()"
+        [disabled]="form.shouldDisable()"
+      >
+        Registrar
+      </button>
+    </div>
+  </div>
+</div>

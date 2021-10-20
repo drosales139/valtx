@@ -49,231 +49,17 @@ $tertiary: #d5cfcf;
 
   mat-nav-list.mat-nav-list.mat-list-base {
     a div.mat-list-item-content {
-      font-size: 0.9em;
+      font-size: 0.8em;
     }
-  }
-}
-
-@mixin mat-form-field($theme) {
-}
-
-@mixin item($theme) {
-  .item-form {
-    width: 80px;
-    background-color: #d5cfcf;
-    border-color: transparent;
-    color: #555555;
-    text-align: center;
-  }
-  .item-form-auto {
-    width: auto;
-  }
-  .item-form:focus {
-    outline: none;
-  }
-  .active {
-    background-color: #f8f8f8;
-  }
-}
-
-@mixin list($theme) {
-  .list-item {
-    background-color: #f7f7f7;
-    padding: 10px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #d5cfcf;
-    }
-  }
-
-  .list-item-dark {
-    background-color: #d5cfcf;
-    padding: 10px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .list-item-light {
-    background-color: #f0f2f4;
-    padding: 10px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .list-item-selected {
-    background-color: #afc226;
-    padding: 10px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .list-order {
-    max-height: 425px;
-    overflow: auto;
-    padding-right: 5px;
-
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: #ffffff;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #a8a8a8;
-    }
-
-    @media only screen and (min-height: 900px) {
-      min-height: 650px;
-    }
-  }
-
-  .list-register {
-    max-height: 300px;
-    overflow: auto;
-    padding-right: 5px;
-
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: #ffffff;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #a8a8a8;
-    }
-
-    @media only screen and (min-height: 900px) {
-      min-height: 650px;
-    }
-  }
-
-  .list-item {
-    max-height: 200px;
-    overflow: auto;
-    padding-right: 5px;
-
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: #ffffff;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #a8a8a8;
-    }
-  }
-}
-
-.list {
-  max-height: 400px;
-  overflow: auto;
-  padding-right: 5px;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #a8a8a8;
-  }
-}
-.form-item {
-  max-height: 350px;
-  overflow: auto;
-  padding-right: 5px;
-  width: auto;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #a8a8a8;
-  }
-  @media only screen and (min-height: 900px) {
-    min-height: 650px;
   }
 }
 
 @mixin alert($theme) {
-  .alert-error {
-    // color: #fff;
+  .alert-info {
+    color: #0095ff;
     padding: 10px 5px;
-    border-radius: 5px;
-    background: lighten($color: #e42311, $amount: 30%);
-    margin-top: 5px;
-  }
-}
-
-@mixin mat-spinner($theme) {
-  .spinner-sm {
-    width: 64px;
-    height: 36px;
-  }
-}
-
-@mixin variables($theme) {
-  $red: #e1443d;
-  $yellow: #fce363;
-  $green: #3cc880;
-  $complete: #f0f2f4;
-
-  .control,
-  .critical,
-  .monitoring,
-  .nothing {
-    width: 100%;
-    height: 100%;
-    color: white;
-  }
-
-  .controlTable,
-  .criticalTable,
-  .monitoringTable,
-  .nothingTable {
-    width: 100%;
-    color: white;
-  }
-
-  .monitoring,
-  .monitoringTable {
-    background-color: $yellow;
-    color: #555555;
-  }
-
-  .complete {
-    background-color: $complete;
-    color: #555555;
-  }
-  .control,
-  .controlTable {
-    background-color: $green;
-  }
-
-  .critical,
-  .criticalTable {
-    background-color: $red;
-  }
-
-  .nothing,
-  .nothingTable {
-    background-color: #d5cfcf;
-    color: #555555;
+    border-radius: 0 0 5px 5px;
+    background: #ffffff;
   }
 }
 
@@ -289,15 +75,19 @@ $tertiary: #d5cfcf;
   }
 }
 
+@mixin mat-toolbar($theme) {
+  mat-toolbar.mat-toolbar.mat-primary.mat-toolbar-single-row {
+    height: auto;
+    padding: 10px;
+  }
+}
+
 // Theme Init
 @include angular-material-theme($theme);
 @include labels($theme);
 @include buttons($theme);
 @include text($theme);
 @include mat-nav-list($theme);
-@include mat-form-field($theme);
-@include list($theme);
 @include alert($theme);
-@include mat-spinner($theme);
-@include variables($theme);
 @include mat-snackbar($theme);
+@include mat-toolbar($theme);

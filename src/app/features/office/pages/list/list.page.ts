@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MOCK_OFFICES } from 'src/app/shared/mocks/offices';
+import { MatDialog } from '@angular/material/dialog';
 import { Office } from 'src/app/shared/models/office';
 import { User } from 'src/app/shared/models/user.model';
-import { UserService } from 'src/app/shared/services/user.service';
+import { OfficeService } from 'src/app/shared/services/office.service';
+import { CreateOfficeComponent } from '../../dialogs/create-office/create-office.component';
+import { UpdateOfficeComponent } from '../../dialogs/update-office/update-office.component';
 
 @Component({
   selector: 'app-list',
@@ -10,25 +12,46 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./list.page.scss'],
 })
 export class ListComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private officeService: OfficeService, public dialog: MatDialog) {}
 
-  offices: Office[] = MOCK_OFFICES;
+  offices: Office[] = [];
 
   ngOnInit(): void {
-    // this.userService.getUsers().subscribe((data) => {
-    //   this.users$ = data;
-    //   this.arrayUser = data;
-    // });
+    this.getOffices();
+  }
+
+  getOffices() {
+    this.officeService.getOffices().subscribe((data) => {
+      this.offices = data;
+    });
+  }
+  openDialog() {
+    this.dialog
+      .open(CreateOfficeComponent)
+      .beforeClosed()
+      .subscribe((data) => {
+        if (!!data) {
+          this.offices.push(data);
+          this.offices = [...this.offices];
+        }
+      });
   }
 
   remove(payload: { index: number; user: User }) {
     const newValues: Office[] = this.offices;
     newValues.splice(payload.index, 1);
-
-    console.log(this.offices);
-
-    return (this.offices = newValues);
+    this.offices = [...newValues];
   }
 
-  update(payload: { index: number; user: User }) {}
+  update(payload: { index: number; office: Office }) {
+    this.dialog
+      .open(UpdateOfficeComponent, { data: payload.office })
+      .beforeClosed()
+      .subscribe((data) => {
+        if (!!data) {
+          this.offices[payload.index] = data;
+          this.offices = [...this.offices];
+        }
+      });
+  }
 }

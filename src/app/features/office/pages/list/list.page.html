@@ -1,8 +1,14 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-  <div fxFlex.gt-md="700px" fxLayout="column" fxLayoutGap="10px">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex fxFlex.gt-md="700px" fxLayout="column">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      style="margin-bottom: 10px"
+    >
       <h1 class="mat-title">Listado de sucursales</h1>
-      <button mat-raised-button color="primary">Agregar sucursal</button>
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        Agregar sucursal
+      </button>
     </div>
     <list-office
       fxFlex
@@ -10,5 +16,20 @@
       (update)="update($event)"
       (delete)="remove($event)"
     ></list-office>
+
+    <div
+      fxflex
+      fxLayout="row"
+      class="alert-info"
+      fxLayoutAlign="center center"
+      [fxShow]="offices.length==0"
+    >
+      <div fxFlex fxLayoutAlign="start center" fxLayoutGap="10px">
+        <div>
+          <mat-icon color="info">error</mat-icon>
+        </div>
+        <div>No se han encontrado registros.</div>
+      </div>
+    </div>
   </div>
 </div>

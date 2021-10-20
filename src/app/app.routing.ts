@@ -9,6 +9,11 @@ const routes: Routes = [
     component: CoreLayout,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'users',
+      },
+      {
         path: 'users',
         loadChildren: () =>
           import('./features/user/user.module').then((m) => m.UserModule),

@@ -18,10 +18,14 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {}
 
   onDelete(index: number, office: Office): void {
+    console.log();
+
     this.delete.emit({ index, office });
   }
 
   onUpdate(index: number, office: Office): void {
+    console.log('update');
+
     this.update.emit({ index, office });
   }
 }

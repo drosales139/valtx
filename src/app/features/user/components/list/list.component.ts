@@ -15,6 +15,7 @@ export class ListComponent implements OnInit {
     'codUser',
     'name',
     'password',
+    'user',
     'codOffice',
     'actions',
   ];

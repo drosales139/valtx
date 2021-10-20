@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'core',
@@ -7,9 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./core.layout.scss'],
 })
 export class CoreLayout implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    // this.basicDataFacade.getUser(this.uid);
-  }
+  ngOnInit(): void {}
 }
