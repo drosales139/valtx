@@ -1,0 +1,102 @@
+<form
+  [formGroup]="form"
+  fxLayout="column"
+  fxLayoutAlign="center stretch"
+  (ngSubmit)="onSubmit()"
+  class="mat-body"
+  fxLayoutGap="10px"
+>
+  <div fxFlexFill fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+    <mat-form-field fxFlex>
+      <mat-label>Nombre </mat-label>
+      <input autocomplete="off" formControlName="name" matInput type="text" />
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'name')">
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('alphaWithSpace', 'name')">
+          Sólo se permiten letras.
+        </span>
+        <span *ngIf="form.hasError('whitespace', 'name')">
+          No has introducido caracteres.
+        </span>
+        <span
+          *ngIf="
+            !form.hasError('whitespace', 'name') &&
+            form.hasError('pattern', 'name')
+          "
+        >
+          No es un formato válido.
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-label>Usuario</mat-label>
+      <input formControlName="user" matInput type="text" />
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'user')">
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('alphaWithSpace', 'user')">
+          Sólo se permiten letras.
+        </span>
+        <span *ngIf="form.hasError('whitespace', 'user')">
+          No has introducido caracteres.
+        </span>
+        <span
+          *ngIf="
+            !form.hasError('whitespace', 'user') &&
+            form.hasError('pattern', 'user')
+          "
+        >
+          No es un formato válido.
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-label> Contraseña</mat-label>
+      <input
+        name="password"
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+        placeholder="* * * * * *"
+        matInput
+        [maxLength]="20"
+      />
+
+      <button
+        mat-icon-button
+        matPrefix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error> Este campo es requerido. </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxFlexFill fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+    <mat-form-field fxFlex>
+      <mat-label> Sucursal </mat-label>
+
+      <mat-select formControlName="cod_sucursal">
+        <mat-option *ngFor="let suc of offices" [value]="suc.cod_sucursal">
+          {{ suc.name }}
+        </mat-option>
+      </mat-select>
+
+      <mat-error>
+        <span *ngIf="form.hasError('required', 'cod_sucursal')">
+          Este campo es requerido.
+        </span>
+        <span *ngIf="form.hasError('whitespace', 'cod_sucursal')">
+          No has introducido caracteres.
+        </span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

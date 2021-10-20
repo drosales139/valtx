@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex.gt-md="700px" fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <h1 class="mat-title">Listado de sucursales</h1>
+      <button mat-raised-button color="primary">Agregar sucursal</button>
+    </div>
+    <list-office
+      fxFlex
+      [dataSource]="offices"
+      (update)="update($event)"
+      (delete)="remove($event)"
+    ></list-office>
+  </div>
+</div>

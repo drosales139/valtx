@@ -1,0 +1,88 @@
+<mat-sidenav-container fxFlex class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar
+      color="primary"
+      fxLayout="row"
+      fxLayoutAlign="space-between  center"
+    >
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px">
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <img src="/assets/logo-white.png" class="logo_image" />
+          </div>
+          <div class="separator" fxLayoutGap="5px"></div>
+          <div
+            class="mat-body text-white"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+          >
+            Caso práctico
+          </div>
+        </div>
+      </div>
+      <div fxLayoutAlign="center center">
+        <mat-nav-list fxLayout="row" fxLayoutGap="15px">
+          <ng-container>
+            <a
+              mat-list-item
+              routerLink="/users"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              fxLayoutAlign="center center"
+              fxLayoutGap="10px"
+            >
+              <div
+                xLayout="row"
+                fxLayoutAlign="space-around center"
+                fxLayoutGap="10px"
+              >
+                <mat-icon>people </mat-icon>
+                <div>Usuarios</div>
+              </div>
+            </a>
+
+            <a
+              mat-list-item
+              routerLink="/offices"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              fxLayoutAlign="center center"
+              fxLayoutGap="10px"
+            >
+              <div
+                xLayout="row"
+                fxLayoutAlign="space-around center"
+                fxLayoutGap="10px"
+              >
+                <mat-icon>store</mat-icon>
+                <div>Sucursales</div>
+              </div>
+            </a>
+
+            <a
+              mat-list-item
+              routerLink="/products"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              fxLayoutAlign="center center"
+              fxLayoutGap="10px"
+            >
+              <div
+                xLayout="row"
+                fxLayoutAlign="space-around center"
+                fxLayoutGap="10px"
+              >
+                <mat-icon>inventory</mat-icon>
+                <div>Productos</div>
+              </div>
+            </a>
+          </ng-container>
+        </mat-nav-list>
+      </div>
+    </mat-toolbar>
+
+    <div class="router-container">
+      <router-outlet class="page"> </router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

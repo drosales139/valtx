@@ -1,0 +1,16 @@
+@import "theme.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.responsive-list {
+  width: 1200px;
+}
+
+div:focus {
+  outline: none;
+}

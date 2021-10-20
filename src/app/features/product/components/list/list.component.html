@@ -1,0 +1,47 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="codProd">
+    <mat-header-cell *matHeaderCellDef> Clave </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.cod_producto }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.price | currency }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let element; let index = index">
+      <div fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+        <div>
+          <button
+            mat-icon-button
+            (click)="onUpdate(index, element)"
+            color="primary"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            (click)="onDelete(index, element)"
+            color="error"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
